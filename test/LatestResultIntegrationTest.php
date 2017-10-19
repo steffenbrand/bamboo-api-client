@@ -7,7 +7,7 @@ use SteffenBrand\BambooApiClient\Client\BambooClient;
 
 /**
  * Class LatestResultIntegrationTest
- * @package WGG\CamundaClient\Test
+ * @package SteffenBrand\BambooApiClient\Test
  */
 class LatestResultIntegrationTest extends TestCase
 {

@@ -7,8 +7,8 @@ use SteffenBrand\BambooApiClient\Model\Plan;
 use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
- * Class VariableMapper
- * @package WGG\CamundaClient\Mapper
+ * Class ResultMapper
+ * @package SteffenBrand\BambooApiClient\Mapper
  */
 class ResultMapper extends AbstractMapper
 {

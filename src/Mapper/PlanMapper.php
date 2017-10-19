@@ -6,8 +6,8 @@ use SteffenBrand\BambooApiClient\Model\Link;
 use SteffenBrand\BambooApiClient\Model\Plan;
 
 /**
- * Class VariableMapper
- * @package WGG\CamundaClient\Mapper
+ * Class PlanMapper
+ * @package SteffenBrand\BambooApiClient\Mapper
  */
 class PlanMapper extends AbstractMapper
 {
