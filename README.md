@@ -1,8 +1,8 @@
 # Bamboo API Client
 PHP client for Bamboo API (6.1.1)
 
-* [DMN Decision Tables on Packagist](https://packagist.org/packages/steffenbrand/bamboo-api-client)
-* [DMN Decision Tables on GitHub](https://github.com/steffenbrand/bamboo-api-client)
+* [Bamboo API Client on Packagist](https://packagist.org/packages/steffenbrand/bamboo-api-client)
+* [Bamboo API Client on GitHub](https://github.com/steffenbrand/bamboo-api-client)
 
 ## Limitations
 
