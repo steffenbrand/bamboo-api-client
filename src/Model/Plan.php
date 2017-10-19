@@ -29,7 +29,7 @@ class Plan
     private $name;
 
     /**
-     * @var string
+     * @var Link
      */
     private $link;
 
@@ -98,17 +98,17 @@ class Plan
     }
 
     /**
-     * @return string
+     * @return Link
      */
-    public function getLink(): string
+    public function getLink(): Link
     {
         return $this->link;
     }
 
     /**
-     * @param string $link
+     * @param Link $link
      */
-    public function setLink(string $link)
+    public function setLink(Link $link)
     {
         $this->link = $link;
     }

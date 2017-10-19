@@ -11,6 +11,16 @@ use SteffenBrand\BambooApiClient\Model\Result;
 interface BambooClientInterface
 {
     /**
+     * BambooClient constructor.
+     *
+     * @param string $baseUrl
+     * @param string $username
+     * @param string $password
+     * @param float $timeout
+     */
+    public function __construct(string $baseUrl, string $username, string $password, float $timeout);
+
+    /**
      * Get latest result by key.
      *
      * @param string $key

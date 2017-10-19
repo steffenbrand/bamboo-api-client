@@ -38,7 +38,7 @@ class BambooClient extends AbstractBambooClient
             throw new BambooRequestException('Plans key must be provided.');
         }
 
-        $response = $this->get('latest/result/' . $key . '.json', ['max-results' => 1]);
+        $response = $this->get('/rest/api/latest/result/' . $key . '.json', ['max-results' => 1]);
 
         if (200 !== (int) $response->getStatusCode()) {
             $this->throwRequestException(sprintf('Result for latest run of %s could not be requested.', $key), $response);
