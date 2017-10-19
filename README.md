@@ -16,10 +16,6 @@ composer require steffenbrand/bamboo-api-client
 
 ## How to use
 
-These examples show how to use the client.
-
-### Build decision table
-
 ```php
 try {
     $client = new BambooClient(
