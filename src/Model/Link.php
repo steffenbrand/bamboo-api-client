@@ -6,7 +6,7 @@ namespace SteffenBrand\BambooApiClient\Model;
  * Class Link
  * @package SteffenBrand\BambooApiClient\Model
  */
-class Link
+class Link implements \JsonSerializable
 {
     /**
      * @var string
@@ -48,5 +48,13 @@ class Link
     public function setRel(string $rel)
     {
         $this->rel = $rel;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'href' => $this->href,
+            'rel' => $this->rel
+        ];
     }
 }

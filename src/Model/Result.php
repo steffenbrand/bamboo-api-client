@@ -6,7 +6,7 @@ namespace SteffenBrand\BambooApiClient\Model;
  * Class Result
  * @package SteffenBrand\BambooApiClient\Model
  */
-class Result
+class Result implements \JsonSerializable
 {
     /**
      * @var Plan
@@ -90,5 +90,15 @@ class Result
     public function setLink(Link $link)
     {
         $this->link = $link;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'state' => $this->state,
+            'number' => $this->number,
+            'plan' => json_encode($this->plan),
+            'link' => json_encode($this->link)
+        ];
     }
 }
