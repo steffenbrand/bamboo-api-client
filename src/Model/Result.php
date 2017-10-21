@@ -97,8 +97,8 @@ class Result implements \JsonSerializable
         return [
             'state' => $this->state,
             'number' => $this->number,
-            'plan' => json_encode($this->plan),
-            'link' => json_encode($this->link)
+            'plan' => $this->plan,
+            'link' => $this->link
         ];
     }
 }

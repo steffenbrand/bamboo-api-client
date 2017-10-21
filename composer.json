@@ -3,7 +3,7 @@
   "description": "Bamboo API Client",
   "homepage": "https://github.com/steffenbrand/bamboo-api-client",
   "type": "library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [
     {
       "name": "Steffen Brand",

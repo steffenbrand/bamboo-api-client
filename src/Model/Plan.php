@@ -120,7 +120,7 @@ class Plan implements \JsonSerializable
             'shortKey' => $this->shortKey,
             'key' => $this->key,
             'name' => $this->name,
-            'link' => json_encode($this->link)
+            'link' => $this->link
         ];
     }
 }
