@@ -4,6 +4,8 @@ namespace SteffenBrand\BambooApiClient\Test;
 
 use PHPUnit\Framework\TestCase;
 use SteffenBrand\BambooApiClient\Client\BambooClient;
+use SteffenBrand\BambooApiClient\Model\Plan;
+use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
  * Class LatestResultIntegrationTest
@@ -19,9 +21,9 @@ class LatestResultIntegrationTest extends TestCase
     public function setUp()
     {
         $this->client = new BambooClient(
-            'http://bamboo.dev',
-            'user',
-            'pass'
+            'x',
+            'y',
+            'z'
         );
     }
 
@@ -29,15 +31,16 @@ class LatestResultIntegrationTest extends TestCase
     {
         $result = $this->client->getLatestResultByKey('MY-PLAN');
 
-        $result->getNumber();
-        $result->getState();
-        $result->getLink()->getHref();
-        $result->getPlan()->getKey();
-        $result->getPlan()->getName();
-        $result->getPlan()->getShortKey();
-        $result->getPlan()->getShortName();
-        $result->getPlan()->getLink()->getHref();
+        $this->assertNotNull($result);
+        $this->assertInstanceOf(Result::class, $result);
+    }
+
+    public function testGetAllPlans()
+    {
+        $result = $this->client->getPlanList();
 
         $this->assertNotNull($result);
+        $this->assertNotEmpty($result);
+        $this->assertContainsOnly(Plan::class, $result);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace SteffenBrand\BambooApiClient\Client;
 
+use SteffenBrand\BambooApiClient\Model\Plan;
 use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
@@ -27,4 +28,11 @@ interface BambooClientInterface
      * @return Result
      */
     public function getLatestResultByKey(string $key): Result;
+
+    /**
+     * Get a list of all plans.
+     *
+     * @return Plan[]
+     */
+    public function getPlanList(): array;
 }

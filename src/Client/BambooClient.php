@@ -3,7 +3,9 @@
 namespace SteffenBrand\BambooApiClient\Client;
 
 use SteffenBrand\BambooApiClient\Exception\BambooRequestException;
+use SteffenBrand\BambooApiClient\Mapper\PlanMapper;
 use SteffenBrand\BambooApiClient\Mapper\ResultMapper;
+use SteffenBrand\BambooApiClient\Model\Plan;
 use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
@@ -50,6 +52,34 @@ class BambooClient extends AbstractBambooClient
         }
 
         $result = ResultMapper::getMapperInstance($responseData['results']['result'][0], new Result())->map();
+
+        return $result;
+    }
+
+    /**
+     * Get a list of all plans.
+     *
+     * @return Plan[]
+     */
+    public function getPlanList(): array
+    {
+        $response = $this->get('/rest/api/latest/plan.json');
+
+        if (200 !== (int) $response->getStatusCode()) {
+            $this->throwRequestException('List of plans could not be requested.', $response);
+        }
+
+        $responseData = json_decode($response->getBody()->getContents(), true);
+
+        if (false === isset($responseData['plans']['size']) || $responseData['plans']['size'] < 1) {
+            return [];
+        }
+
+        $result = [];
+
+        foreach ($responseData['plans']['plan'] as $plan) {
+            $result[] = PlanMapper::getMapperInstance($plan, new Plan())->map();
+        }
 
         return $result;
     }

@@ -6,7 +6,9 @@ PHP client for Bamboo API (6.1.1)
 
 ## Limitations
 
-- Currently only supports `/rest/api/latest/result/{key}` request
+Currently only supports the following methods:
+- `/rest/api/latest/result/{key}` (getLatestResultByKey)
+- `/rest/api/latest/plan` (getPlanList)
 
 ## How to install
 
@@ -15,6 +17,8 @@ composer require steffenbrand/bamboo-api-client
 ```
 
 ## How to use
+
+### getLatestResultByKey
 
 ```php
 try {
@@ -34,6 +38,34 @@ try {
     $result->getPlan()->getShortKey();
     $result->getPlan()->getShortName();
     $result->getPlan()->getLink()->getHref();
+} catch (BambooRequestException $e) {
+    // Request might fail
+} catch (\RuntimeException $e) {
+    // Something could go wrong during runtime
+}
+```
+
+### getPlanList
+
+```php
+try {
+    $client = new BambooClient(
+        'http://bamboo.dev',
+        'user',
+        'pass'
+    );
+    
+    $result = $client->getPlanList();
+    
+    if (count($result) > 0) {
+        foreach ($result as $plan) {
+            $plan->getKey();
+            $plan->getName();
+            $plan->getShortKey();
+            $plan->getShortName();
+            $plan->getLink()->getHref();
+        }
+    }
 } catch (BambooRequestException $e) {
     // Request might fail
 } catch (\RuntimeException $e) {
