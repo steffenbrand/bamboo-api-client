@@ -2,7 +2,6 @@
 
 namespace SteffenBrand\BambooApiClient\Client;
 
-use SteffenBrand\BambooApiClient\Model\Plan;
 use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
@@ -30,9 +29,11 @@ interface BambooClientInterface
     public function getLatestResultByKey(string $key): Result;
 
     /**
-     * Get a list of all plans.
+     * Get a list of all plans, paginated with limit and offset.
      *
-     * @return Plan[]
+     * @param int $limit
+     * @param int $offset
+     * @return array
      */
-    public function getPlanList(): array;
+    public function getPlanList($limit = 25, $offset = 0): array;
 }
