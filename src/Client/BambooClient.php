@@ -60,11 +60,18 @@ class BambooClient extends AbstractBambooClient
      * Get a list of all plans.
      *
      * @param integer $maxresult
+     * @param integer $startindex
      * @return Plan[]
      */
-    public function getPlanList($maxresult = 25): array
+    public function getPlanList($maxresult = 25, $startindex = 0): array
     {
-        $response = $this->get('/rest/api/latest/plan.json', ['max-results' => $maxresult]);
+        $response = $this->get(
+            '/rest/api/latest/plan.json',
+            [
+                'max-results' => $maxresult,
+                'start-index' => $startindex
+            ]
+        );
 
         if (200 !== (int) $response->getStatusCode()) {
             $this->throwRequestException('List of plans could not be requested.', $response);
