@@ -57,19 +57,19 @@ class BambooClient extends AbstractBambooClient
     }
 
     /**
-     * Get a list of all plans, paginated with limit and offset.
+     * Get a list of all plans, paginated with maxResults and startIndex parameters.
      *
-     * @param integer $limit
-     * @param integer $offset
+     * @param integer $maxResults
+     * @param integer $startIndex
      * @return Plan[]
      */
-    public function getPlanList($limit = 25, $offset = 0): array
+    public function getPlanList($maxResults = 25, $startIndex = 0): array
     {
         $response = $this->get(
             '/rest/api/latest/plan.json',
             [
-                'max-results' => $limit,
-                'start-index' => $offset
+                'max-results' => $maxResults,
+                'start-index' => $startIndex
             ]
         );
 
