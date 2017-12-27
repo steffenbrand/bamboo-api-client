@@ -57,19 +57,51 @@ class BambooClient extends AbstractBambooClient
     }
 
     /**
-     * Get a list of all plans.
+     * Get a list of all plans
      *
-     * @param integer $maxresult
-     * @param integer $startindex
      * @return Plan[]
      */
-    public function getPlanList($maxresult = 25, $startindex = 0): array
+    public function getPlanList(): array
     {
+        $responseArray = [];
+        $response = $this->getPlans();
+
+        if (empty($response)) {
+            return [];
+        }
+
+        $planCount = $response['size'];
+
+        while (count($responseArray) < $planCount) {
+            $response = $this->getPlans(count($responseArray));
+            $responseArray = array_merge($responseArray, $response['plan']);
+        }
+
+        $plans = [];
+
+        foreach ($responseArray as $plan) {
+            $plans[] = PlanMapper::getMapperInstance($plan, new Plan())->map();
+        }
+
+        return $plans;
+    }
+
+    /**
+     * Get Bamboo plans paginated with maxResults and startIndex parameters.
+     * @param integer $startIndex
+     * @param integer $maxResults
+     *
+     * @return array
+     */
+    public function getPlans($startIndex = 0, $maxResults = 25): array
+    {
+        $maxResults = ($maxResults > 100 ? 100 : $maxResults);
+
         $response = $this->get(
             '/rest/api/latest/plan.json',
             [
-                'max-results' => $maxresult,
-                'start-index' => $startindex
+                'start-index' => $startIndex,
+                'max-results' => $maxResults,
             ]
         );
 
@@ -83,12 +115,6 @@ class BambooClient extends AbstractBambooClient
             return [];
         }
 
-        $result = [];
-
-        foreach ($responseData['plans']['plan'] as $plan) {
-            $result[] = PlanMapper::getMapperInstance($plan, new Plan())->map();
-        }
-
-        return $result;
+        return $responseData['plans'];
     }
 }
