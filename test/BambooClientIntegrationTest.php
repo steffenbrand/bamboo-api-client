@@ -8,10 +8,10 @@ use SteffenBrand\BambooApiClient\Model\Plan;
 use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
- * Class LatestResultIntegrationTest
+ * Class BambooClientIntegrationTest
  * @package SteffenBrand\BambooApiClient\Test
  */
-class LatestResultIntegrationTest extends TestCase
+class BambooClientIntegrationTest extends TestCase
 {
     /**
      * @var BambooClient

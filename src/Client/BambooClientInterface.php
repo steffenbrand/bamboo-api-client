@@ -2,7 +2,6 @@
 
 namespace SteffenBrand\BambooApiClient\Client;
 
-use SteffenBrand\BambooApiClient\Model\Plan;
 use SteffenBrand\BambooApiClient\Model\Result;
 
 /**
@@ -32,16 +31,16 @@ interface BambooClientInterface
     /**
      * Get a list of all plans
      *
-     * @return Plan[]
+     * @return array
      */
-    public function getPlanList();
+    public function getPlanList(): array;
 
     /**
      * Get Bamboo plans paginated with maxResults and startIndex parameters.
      *
-     * @param int $maxResults
-     * @param int $startIndex
+     * @param integer $startIndex
+     * @param integer $maxResults
      * @return array
      */
-    public function getPlans($startIndex = 0, $maxResults = 25);
+    public function getPlans($startIndex = 0, $maxResults = 25): array;
 }

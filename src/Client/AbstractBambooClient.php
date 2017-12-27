@@ -38,7 +38,7 @@ abstract class AbstractBambooClient implements BambooClientInterface
     }
 
     /**
-     * Perform GET request to TAC Service.
+     * Perform GET request to Bamboo Webservice.
      *
      * @param string $path The absolute request path with leading "/"
      * @param array $query A list of query parameters
