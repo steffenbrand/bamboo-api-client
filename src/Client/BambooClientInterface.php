@@ -29,11 +29,18 @@ interface BambooClientInterface
     public function getLatestResultByKey(string $key): Result;
 
     /**
-     * Get a list of all plans, paginated with maxResults and startIndex parameters.
+     * Get a list of all plans
      *
-     * @param int $maxResults
-     * @param int $startIndex
      * @return array
      */
-    public function getPlanList($maxResults = 25, $startIndex = 0): array;
+    public function getPlanList(): array;
+
+    /**
+     * Get Bamboo plans paginated with maxResults and startIndex parameters.
+     *
+     * @param integer $startIndex
+     * @param integer $maxResults
+     * @return array
+     */
+    public function getPlans($startIndex = 0, $maxResults = 25): array;
 }
